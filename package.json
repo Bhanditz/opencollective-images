@@ -26,7 +26,8 @@
     "lru-cache": "^5.1.1",
     "node-fetch": "^2.3.0",
     "request": "^2.88.0",
-    "winston": "^3.1.0"
+    "winston": "^3.1.0",
+    "snyk": "^1.189.0"
   },
   "scripts": {
     "start": "NODE_ENV=production node dist/server",
@@ -45,7 +46,9 @@
     "commit": "git-cz",
     "prettier": "prettier \"src/**/*.js\" \"test/**/*.js\"",
     "prettier:write": "npm run prettier -- --write",
-    "prettier:check": "npm run prettier -- --list-different"
+    "prettier:check": "npm run prettier -- --list-different",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
@@ -76,7 +79,9 @@
     }
   },
   "nodemonConfig": {
-    "watch": ["src/server"]
+    "watch": [
+      "src/server"
+    ]
   },
   "husky": {
     "hooks": {
@@ -84,6 +89,10 @@
     }
   },
   "lint-staged": {
-    "*.js": ["prettier --write", "git add"]
-  }
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "snyk": true
 }
